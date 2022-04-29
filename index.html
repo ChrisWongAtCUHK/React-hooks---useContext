@@ -48,7 +48,18 @@
 
     const CountContext = React.createContext();
 
-    const Counter = () => {
+    const Counter1 = () => {
+      const { count, increase, decrease } = useContext(CountContext);
+      return (
+        <div className="wrapper">
+          <button onClick={decrease}>-</button>
+          <span className="count">{count}</span>
+          <button onClick={increase}>+</button>
+        </div>
+      );
+    };
+
+    const Counter2 = () => {
       const { count, increase, decrease } = useContext(CountContext);
       return (
         <div className="wrapper">
@@ -74,7 +85,8 @@
           <CountContext.Provider
             value={{ count, increase, decrease }}
           >
-            <Counter />
+            <Counter1 />
+            <Counter2 />
           </CountContext.Provider>
         </div>
       );
