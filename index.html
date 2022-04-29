@@ -44,12 +44,10 @@
 
   <!-- Your custom script here -->
   <script type="text/babel">
-    const { useState, useContext } = React
+    const { useState } = React
 
-    const CountContext = React.createContext();
-
-    const Counter = () => {
-      const { count, increase, decrease } = useContext(CountContext);
+    const Counter = (props) => {
+      const { count, increase, decrease } = props;
       return (
         <div className="wrapper">
           <button onClick={decrease}>-</button>
@@ -71,11 +69,7 @@
 
       return (
         <div>
-          <CountContext.Provider
-            value={{ count, increase, decrease }}
-          >
-            <Counter />
-          </CountContext.Provider>
+            <Counter count={count} increase={increase} decrease={decrease}/>
         </div>
       );
     };
